@@ -50,7 +50,7 @@ export default function Home() {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900 text-white font-sans">
-      <div className="text-center p-8 shadow-lg rounded-lg bg-gray-800 border border-gray-700">
+      <div className="text-center p-8 shadow-lg rounded-lg bg-gray-800 border border-gray-700 -mt-14">
         <h1 className="text-2xl font-extrabold mb-6 text-gray-200">
           January 13 - Now
         </h1>
