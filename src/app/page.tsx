@@ -12,24 +12,19 @@ const calculateTimeElapsed = (startDate: Date) => {
   const difference = now.getTime() - startDate.getTime();
 
   if (difference <= 0) {
-    return { totalDays: 0, months: 0, weeks: 0, days: 0 };
+    return { totalDays: 0, weeks: 0, days: 0 };
   }
 
   return {
     totalDays: Math.floor(difference / (1000 * 60 * 60 * 24)),
-    months: Math.floor(difference / (1000 * 60 * 60 * 24 * 30)),
-    weeks: Math.floor(
-      (difference % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24 * 7)
-    ),
-    days: Math.floor(
-      (difference % (1000 * 60 * 60 * 24 * 7)) / (1000 * 60 * 60 * 24)
-    ),
+    weeks: Math.floor(difference / (1000 * 60 * 60 * 24 * 7)),
+    days: Math.floor((difference % (1000 * 60 * 60 * 24 * 7)) / (1000 * 60 * 60 * 24)),
   };
 };
 
 export default function Home() {
   const [timeElapsed, setTimeElapsed] = useState(
-    EVENTS.map(() => ({ totalDays: 0, months: 0, weeks: 0, days: 0 }))
+    EVENTS.map(() => ({ totalDays: 0, weeks: 0, days: 0 }))
   );
 
   const updateTimeElapsed = useCallback(() => {
@@ -60,11 +55,6 @@ export default function Home() {
                   {timeElapsed[index].totalDays}
                 </p>
                 <p>
-                  {timeElapsed[index].months > 0 && (
-                    <span className="font-semibold">
-                      {timeElapsed[index].months} months,{' '}
-                    </span>
-                  )}
                   <span className="font-semibold">{timeElapsed[index].weeks} weeks, </span>
                   <span className="font-semibold">{timeElapsed[index].days} days</span>
                 </p>
